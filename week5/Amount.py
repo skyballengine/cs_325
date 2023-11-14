@@ -28,6 +28,8 @@ def amount(A, S):
     results = []
     chosen = [False] * len(A)
     amount_helper(A, 0, results, S, [], chosen)
+
+
     final_results = []
     for j in results:
         j.sort()
