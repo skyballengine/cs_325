@@ -73,5 +73,5 @@ print(my_graph.graph)
 print(my_graph_2.graph)
 
 print("Topological Sort")
-print(topological_sort(my_graph))
+ print(topological_sort(my_graph))
 
