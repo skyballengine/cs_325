@@ -32,19 +32,6 @@ class Graph:
     def add_edge(self, u, v):
         self.graph[u].append(v)
 
-# Helper function that marks node as visited, then checks all adjacent nodes
-def helper_topological_sort(input_graph, node, visited, results):
-    print(f"helper: {results}")
-    print(f"helper: {node}")
-    visited[node] = True    # mark current node as visited
-
-    # recur for all adjacent vertices
-    for i in input_graph.graph[node]:
-        if not visited[i]:
-            helper_topological_sort(input_graph, i, visited, results)
-    results.insert(0, node)
-
-
 def topological_sort(input_graph):
     stack = []  # results begins as empty
 
@@ -59,6 +46,19 @@ def topological_sort(input_graph):
             helper_topological_sort(input_graph, curr_node, visited, stack)
 
     return stack
+
+# Helper function that marks node as visited, then checks all adjacent nodes
+def helper_topological_sort(input_graph, node, visited, results):
+    print(f"helper: {results}")
+    print(f"helper: {node}")
+    visited[node] = True    # mark current node as visited
+
+    # recur for all adjacent vertices
+    for i in input_graph.graph[node]:
+        if not visited[i]:
+            helper_topological_sort(input_graph, i, visited, results)
+    results.insert(0, node)
+
 
 
 my_graph = Graph(5)

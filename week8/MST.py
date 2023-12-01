@@ -15,7 +15,7 @@ def Prims(G):
         visited[curr] = True
 
         if prev is not None:
-            mst.append((w, curr, prev))
+            mst.append((prev, curr, w))
 
         for v in range(len(G)):
             if G[curr][v] != 0 and not visited[v]:
