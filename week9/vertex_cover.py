@@ -2,7 +2,7 @@
 WRITE YOUR CODE FOR printVertexCover in below code
 '''
 from collections import defaultdict
-
+from copy import deepcopy
 
 # This class represents a directed graph
 # using adjacency list representation 
@@ -19,9 +19,23 @@ class Graph:
         self.graph[u].append(v)
 
     def printVertexCover(self):
-        solution = {}
+        solution = set()
         edges = [(key, value) for key in self.graph.keys() for value in self.graph[key]]
+        available = [edge for edge in edges]
         print(edges)
+        print(available)
+        while edges:
+            u, v = edges[0]
+            solution = solution.union({u, v})
+            for i in range(len(edges)):
+                if u in edges[i] or v in edges[i]:
+                    available.remove(edges[i])
+            edges = deepcopy(available)
+        for v in solution:
+            print(v, end=" ")
+        return print(solution)
+
+
 ''' 
 WRITE YOUR CODE FOR printVertexCover
 approx-vertex-cover(G):
